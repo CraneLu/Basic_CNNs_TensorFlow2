@@ -5,9 +5,13 @@ from configuration import IMAGE_HEIGHT, IMAGE_WIDTH, CHANNELS, \
 from parse_tfrecord import get_parsed_dataset
 
 
-def load_and_preprocess_image(image):
+def load_and_preprocess_image(image, is_gray=False):
     # decode
-    img_tensor = tf.io.decode_jpeg(contents=image, channels=CHANNELS)
+    # img_tensor = tf.io.decode_jpeg(contents=image, channels=CHANNELS)
+    img_tensor = tf.io.decode_bmp(contents=image)
+    if is_gray is True:
+        # gray to rgb
+        img_tensor = tf.image.grayscale_to_rgb(img_tensor)
     # resize
     img_tensor = tf.image.resize(img_tensor, [IMAGE_HEIGHT, IMAGE_WIDTH])
     img_tensor = tf.dtypes.cast(img_tensor, tf.dtypes.float32)
