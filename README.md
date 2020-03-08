@@ -185,3 +185,29 @@ Run **evaluate.py** to evaluate the model's performance on the test dataset.
 ](https://arxiv.org/abs/1807.11164)
 15. https://zhuanlan.zhihu.com/p/48261931
 16. ResNet: [Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385)
+
+下载Miniconda3-latest-Linux-x86_64.sh
+
+安装conda
+bash Miniconda3-latest-Linux-x86_64.sh
+
+设置conda开机时取消进入虚拟环境
+conda config --set auto_activate_base false
+
+替换conda源为清华源
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+conda config --set show_channel_urls yes
+vim ~/.condarc
+
+创建python3.6 tensorflow2.1的conda虚拟环境
+conda create -n py3.6_tf2.1.0 python=3.6
+
+进入环境
+conda activate py3.6-tf2.1.0
+
+拉取训练代码
+https://github.com/CraneLu/Basic_CNNs_TensorFlow2.git
+
+后台运行，日志输出到log目录下
+nohup python -u train.py > log/train.log 2>&1 &
