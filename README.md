@@ -210,4 +210,4 @@ conda activate py3.6-tf2.1.0
 https://github.com/CraneLu/Basic_CNNs_TensorFlow2.git
 
 后台运行，日志输出到log目录下
-nohup python -u train.py > log/train.log 2>&1 &
+nohup python -u train.py > log/train.log &
