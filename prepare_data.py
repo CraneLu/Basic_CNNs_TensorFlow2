@@ -1,7 +1,7 @@
 import tensorflow as tf
 import pathlib
 from configuration import IMAGE_HEIGHT, IMAGE_WIDTH, CHANNELS, \
-    BATCH_SIZE, train_tfrecord, valid_tfrecord, test_tfrecord
+    BATCH_SIZE, train_tfrecord, valid_tfrecord, test_tfrecord, SHUFFLE_BUFFER_SIZE
 from parse_tfrecord import get_parsed_dataset
 
 
@@ -51,7 +51,7 @@ def generate_datasets():
     test_count = get_the_length_of_dataset(test_dataset)
 
     # read the dataset in the form of batch
-    train_dataset = train_dataset.shuffle().batch(batch_size=BATCH_SIZE)
+    train_dataset = train_dataset.shuffle(SHUFFLE_BUFFER_SIZE).batch(batch_size=BATCH_SIZE)
     valid_dataset = valid_dataset.batch(batch_size=BATCH_SIZE)
     test_dataset = test_dataset.batch(batch_size=BATCH_SIZE)
 
