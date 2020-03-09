@@ -1,7 +1,7 @@
 from __future__ import absolute_import, division, print_function
 import tensorflow as tf
 from configuration import IMAGE_HEIGHT, IMAGE_WIDTH, CHANNELS, \
-    EPOCHS, BATCH_SIZE, save_model_dir, model_index, save_every_n_epoch
+    EPOCHS, BATCH_SIZE, SAVE_MODEL_DIR, model_index, SAVE_EVERY_N_EPOCH
 from prepare_data import generate_datasets, load_and_preprocess_image
 import math
 from models import mobilenet_v1, mobilenet_v2, mobilenet_v3_large, mobilenet_v3_small, \
@@ -172,12 +172,12 @@ if __name__ == '__main__':
         valid_loss.reset_states()
         valid_accuracy.reset_states()
 
-        if (epoch + 1) % save_every_n_epoch == 0:
-            model.save_weights(filepath=save_model_dir+"epoch-{}".format(epoch), save_format='tf')
+        if (epoch + 1) % SAVE_EVERY_N_EPOCH == 0:
+            model.save_weights(filepath=SAVE_MODEL_DIR + "epoch-{}".format(epoch), save_format='tf')
 
 
     # save weights
-    model.save_weights(filepath=save_model_dir+"model", save_format='tf')
+    model.save_weights(filepath=SAVE_MODEL_DIR + "model", save_format='tf')
 
     # save the whole model
     # tf.saved_model.save(model, save_model_dir)

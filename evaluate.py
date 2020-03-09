@@ -1,5 +1,5 @@
 import tensorflow as tf
-from configuration import save_model_dir
+from configuration import SAVE_MODEL_DIR
 from prepare_data import generate_datasets
 from train import get_model, process_features
 
@@ -15,7 +15,7 @@ if __name__ == '__main__':
     train_dataset, valid_dataset, test_dataset, train_count, valid_count, test_count = generate_datasets()
     # load the model
     model = get_model()
-    model.load_weights(filepath=save_model_dir)
+    model.load_weights(filepath=SAVE_MODEL_DIR)
     # model = tf.saved_model.load(save_model_dir)
 
     # Get the accuracy on the test set

@@ -1,5 +1,5 @@
 import tensorflow as tf
-from configuration import train_dir, valid_dir, test_dir, train_tfrecord, valid_tfrecord, test_tfrecord
+from configuration import TRAIN_DIR, VALID_DIR, TEST_DIR, TRAIN_TFRECORD, VALID_TFRECORD, TEST_TFRECORD
 from prepare_data import get_images_and_labels
 import random
 
@@ -59,6 +59,6 @@ def dataset_to_tfrecord(dataset_dir, tfrecord_name):
 
 
 if __name__ == '__main__':
-    dataset_to_tfrecord(dataset_dir=train_dir, tfrecord_name=train_tfrecord)
-    dataset_to_tfrecord(dataset_dir=valid_dir, tfrecord_name=valid_tfrecord)
-    dataset_to_tfrecord(dataset_dir=test_dir, tfrecord_name=test_tfrecord)
+    dataset_to_tfrecord(dataset_dir=TRAIN_DIR, tfrecord_name=TRAIN_TFRECORD)
+    dataset_to_tfrecord(dataset_dir=VALID_DIR, tfrecord_name=VALID_TFRECORD)
+    dataset_to_tfrecord(dataset_dir=TEST_DIR, tfrecord_name=TEST_TFRECORD)
