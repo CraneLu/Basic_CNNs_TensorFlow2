@@ -1,12 +1,12 @@
 # some training parameters
-EPOCHS = 50
+EPOCHS = 45
 BATCH_SIZE = 8
 NUM_CLASSES = 12
 IMAGE_HEIGHT = 224
 IMAGE_WIDTH = 224
 CHANNELS = 3
 save_model_dir = "saved_model/"
-save_every_n_epoch = 10
+save_every_n_epoch = 5
 dataset_dir = "dataset/"
 train_dir = dataset_dir + "train"
 valid_dir = dataset_dir + "valid"
