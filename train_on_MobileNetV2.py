@@ -6,6 +6,8 @@ from prepare_data import *
 
 # get the dataset
 train_dataset, valid_dataset, test_dataset, train_count, valid_count, test_count = generate_datasets()
+# datasets = tf.keras.datasets.fashion_mnist
+# (train_images, train_labels), (test_images, test_labels) = datasets.load_data()
 
 # init base model
 base_model = keras.applications.MobileNetV2(input_shape=(IMAGE_HEIGHT, IMAGE_WIDTH, CHANNELS),
@@ -28,6 +30,7 @@ model.summary()
 
 # evaluate before training
 loss0, accuracy0 = model.evaluate(valid_dataset.repeat())
+# loss0, accuracy0 = model.evaluate(test_images, test_labels)
 
 # # training
 # tensorboard_callback = keras.callbacks.TensorBoard(log_dir="log", histogram_freq=1)

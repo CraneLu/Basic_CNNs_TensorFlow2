@@ -3,19 +3,28 @@ from train import process_features
 from configuration import *
 import cv2
 
+# j = 0
+# k = 0
+# train_dataset, valid_dataset, test_dataset, train_count, valid_count, test_count = generate_datasets()
+# # 3039 392 374
+# print(valid_dataset)
 
-train_dataset, valid_dataset, test_dataset_batch, train_count, valid_count, test_count = generate_datasets()
-for features in train_dataset:
-    images, labels = process_features(features)
-    dataset = tf.data.Dataset.from_tensor_slices((images.numpy(), labels.numpy()))
-    for image, label in dataset:
-        print(image, label)
+# for features in valid_dataset:
+#     print(features)
+#     j += 1
+#     print('batches', j)
+#     images, labels = process_features(features)
+#     for i in range(BATCH_SIZE):
+#         k += 1
+#         print('total', k)
+#         image = images[i]
+#         label = labels[i]
+#         if image is None or label is None or label=='':
+#             print(image, label)
+#
+# print('done')
 
-    # for i in range(BATCH_SIZE):
-    #     image = images[i]
-    #     label = labels[i]
-    #     cv2.imshow(str(label), image.numpy())
-    #     cv2.waitKey()
-    break
+test_dataset = get_parsed_dataset(tfrecord_name='dataset/testdata.tfrecord')
+for data in test_dataset.take(2):
+    print(data)
 
-print('done')
